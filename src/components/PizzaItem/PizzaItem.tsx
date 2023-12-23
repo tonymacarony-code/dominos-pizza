@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 
 const PizzaItem: React.FC<PizzaProps> = ({ id, title, price, imageUrl, types, sizes }) => {
-    const typeNames = ['тонкое', 'традиционное'];
+    const typeNames = ['thin', 'traditional'];
     const [activeType, setActiveType] = useState(0);
     const [activeSize, setActiveSize] = useState(0);
     const dispatch = useDispatch();
@@ -44,12 +44,12 @@ const PizzaItem: React.FC<PizzaProps> = ({ id, title, price, imageUrl, types, si
                 </ul>
                 <ul>
                     {sizes.map((size, index) => (
-                        <li onClick={() => setActiveSize(index)} key={index} className={activeSize === index ? 'active' : '0'}>{size} см.</li>
+                        <li onClick={() => setActiveSize(index)} key={index} className={activeSize === index ? 'active' : '0'}>{size} cm</li>
                     ))}
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">от {price} $</div>
+                <div className="pizza-block__price">от {price} ₴</div>
                 <div className="button button--outline button--add" onClick={onClickAdd}>
                     <svg
                         width="12"
@@ -63,7 +63,7 @@ const PizzaItem: React.FC<PizzaProps> = ({ id, title, price, imageUrl, types, si
                             fill="white"
                         />
                     </svg>
-                    <span>Добавить</span>
+                    <span> Add </span>
                     {count > 0 && <i>{count}</i>}
                 </div>
             </div>

@@ -59,7 +59,7 @@ const Cart: React.FC = () => {
                                     strokeLinecap="round"
                                     strokeLinejoin="round"></path>
                             </svg>
-                            Корзина
+                            Your order:
                         </h2>
                         <div onClick={onClickClear} className="cart__clear">
                             <svg
@@ -94,7 +94,7 @@ const Cart: React.FC = () => {
                                     strokeLinejoin="round"></path>
                             </svg>
 
-                            <span>Очистить корзину</span>
+                            <span>Clear all</span>
                         </div>
                     </div>
                     <div className="content__items">
@@ -105,11 +105,11 @@ const Cart: React.FC = () => {
                         <div className="cart__bottom-details">
                             <span>
                                 {' '}
-                                Всего пицц: <b>{totalCount} шт.</b>{' '}
+                                Pizzas: <b>{totalCount} pos.</b>{' '}
                             </span>
                             <span>
                                 {' '}
-                                Сумма заказа: <b>{totalPrice} $</b>{' '}
+                                Total: <b>{totalPrice} ₴</b>{' '}
                             </span>
                         </div>
                         <div className="cart__bottom-buttons">
@@ -128,10 +128,10 @@ const Cart: React.FC = () => {
                                         strokeLinejoin="round"></path>
                                 </svg>
 
-                                <span>Вернуться назад</span>
+                                <span>Go back</span>
                             </Link>
                             <div className="button pay-btn">
-                                <span>Оплатить сейчас</span>
+                                <span>Pay now</span>
                             </div>
                         </div>
                     </div>

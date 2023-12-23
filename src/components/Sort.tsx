@@ -4,9 +4,9 @@ import { setSort, setMethod } from '../redux/slices/filterSlice'
 import { SortType, SortTypesEnum } from '../@types/types'
 
 export const sortList: SortType[] = [
-    { name: 'популярности', type: SortTypesEnum.POPULAR },
-    { name: 'цене', type: SortTypesEnum.PRICE },
-    { name: 'алфавиту', type: SortTypesEnum.TITLE },
+    { name: 'popular', type: SortTypesEnum.POPULAR },
+    { name: 'price', type: SortTypesEnum.PRICE },
+    { name: 'alphabet', type: SortTypesEnum.TITLE },
 ]
 
 type SortComponentProps = {
@@ -73,7 +73,7 @@ const Sort: React.FC<SortComponentProps> = memo(({ sort, method }) => {
                     }
                 </div>
 
-                <b>Сортировка по:</b>
+                <b>Sort by:</b>
                 <span onClick={() => setIsOpened(!isOpened)}>{sort.name}</span>
             </div>
             {

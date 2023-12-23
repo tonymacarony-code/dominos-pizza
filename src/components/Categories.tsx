@@ -9,12 +9,12 @@ type CategoriesProps = {
 const Categories: React.FC<CategoriesProps> = memo(({ value, onClickCategory }) => {
 
     const items = [
-        'Все',
-        'Мясные',
-        'Вегетарианская',
-        'Гриль',
-        'Острые',
-        'Закрытые',
+        'All',
+        'Meat',
+        'Vegetarian',
+        'Grill',
+        'Spicy',
+        'Closed',
     ]
     return (
         <div className="categories">

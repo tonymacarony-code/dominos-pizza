@@ -1,5 +1,5 @@
 export type SortType = {
-    name: 'популярности' | 'цене' | 'алфавиту',
+    name: 'popular' | 'price' | 'alphabet',
     type: SortTypesEnum,
 }
 
@@ -46,4 +46,13 @@ export interface FilterSliceState {
     currentPage: number,
     method: string,
 }
+
+export type SearchPizzaParams = {
+    sortBy: string
+    sortMethod: string
+    category: string
+    search: string
+    currentPage: number
+}
+
 

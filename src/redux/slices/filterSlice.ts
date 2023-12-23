@@ -7,7 +7,7 @@ const initialState: FilterSliceState = {
     searchValue: '',
     categoryId: 0,
     sort: {
-        name: 'популярности',
+        name: 'popular',
         type: SortTypesEnum.POPULAR,
     },
     currentPage: 1,
@@ -48,7 +48,7 @@ export const filterSlice = createSlice({
                 state.currentPage = 1
                 state.categoryId = 0
                 state.sort = {
-                    name: 'популярности',
+                    name: 'popular',
                     type: SortTypesEnum.POPULAR,
                 }
                 state.method = 'desc'

@@ -7,7 +7,6 @@ import Pagination from '../components/Pagination/Pagination'
 import { useSelector } from 'react-redux'
 import { setCategoryId, setCurrentPage, filterSelector } from '../redux/slices/filterSlice'
 import { fetchPizzas, pizzaSelector } from '../redux/slices/pizzaSlice'
-import { useNavigate } from 'react-router-dom'
 import { useAppDispatch } from '../redux/store'
 
 
@@ -16,11 +15,6 @@ const Home: React.FC = () => {
     const { items, status } = useSelector(pizzaSelector)
 
     const dispatch = useAppDispatch();
-
-    const navigate = useNavigate()
-
-    const isSearch = useRef(false)
-    const isMounted = useRef(false)
 
     const onChangeCategory = useCallback((id: number) => {
         dispatch(setCategoryId(id))
@@ -35,62 +29,9 @@ const Home: React.FC = () => {
         dispatch(fetchPizzas({ sortBy, sortMethod, category, search, currentPage }));
     }
 
-
-    // Если был первый рендер, то проверяем URl-параметры и сохраняем в редуксе
-    // useEffect(() => {
-
-    //     if (window.location.search) {
-
-    //         const params = (qs.parse(window.location.search.substring(1)) as unknown) as SearchPizzaParams;
-    //         const sort = sortList.find((obj) => obj.type === params.sortBy);
-    //         dispatch(
-    //             setFilters({
-    //                 searchValue: params.search,
-    //                 categoryId: Number(params.category),
-    //                 currentPage: Number(params.currentPage),
-    //                 sort: sort || sortList[0],
-    //                 method: params.sortMethod === 'asc' ? 'asc' : 'desc',
-    //             }),
-    //         );
-    //         isSearch.current = true;
-    //     }
-    // }, []);
-
-    // Если был первый рендер, то запрашиваем пиццы
-    // useEffect(() => {
-
-    //     window.scrollTo(0, 0);
-
-    //     if (!isSearch.current) {
-    //         dispatch(fetchPizzas({} as SearchPizzaParams))
-    //     }
-
-    //     isSearch.current = false;
-
-    // }, [categoryId, sort.type, searchValue, currentPage, method]);
-
-
     useEffect(() => {
         getPizzas()
     }, [categoryId, sort.type, searchValue, currentPage, method])
-
-    // Если изменили фильтры, то сохраняем их в URL
-    // useEffect(() => {
-
-    //     if (isMounted.current) {
-
-    //         const queryString = qs.stringify({
-    //             sort: sort.type,
-    //             categoryId,
-    //             currentPage,
-    //             method,
-    //         });
-
-    //         navigate(`?${queryString}`);
-    //     }
-    //     isMounted.current = true;
-
-    // }, [categoryId, sort.type, currentPage, method]);
 
     return (
         <Layout>
@@ -110,7 +51,7 @@ const Home: React.FC = () => {
                     <Categories value={categoryId} onClickCategory={(id: number) => onChangeCategory(id)} />
                     <Sort sort={sort} method={method} />
                 </div>
-                <h2 className="content__title">Все пиццы</h2>
+                <h2 className="content__title">All pizzas</h2>
                 <PizzaContainer pizzas={items} status={status} />
                 <Pagination currentPage={currentPage} onChangePage={(num: number) => dispatch(setCurrentPage(num))} />
             </>

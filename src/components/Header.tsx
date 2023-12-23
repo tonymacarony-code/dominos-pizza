@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import Search from './Search/Search'
 import { useSelector } from 'react-redux'
@@ -7,8 +7,16 @@ import { ICartItem } from '../@types/types'
 
 const Header = () => {
     const { items, totalPrice } = useSelector(cartSelector)
-
+    const isMounted = React.useRef(false)
     const { pathname } = useLocation()
+
+    useEffect(() => {
+        if (isMounted.current) {
+            const json = JSON.stringify(items)
+            localStorage.setItem('cart', json)
+        }
+        isMounted.current = true
+    }, [items])
 
 
     const totalCount = items.reduce((sum: number, obj: ICartItem) => obj.quantity + sum, 0)
@@ -24,7 +32,7 @@ const Header = () => {
                 <div className="header__cart">
                     {pathname !== '/cart' && (
                         <Link to="/cart" className="button button--cart">
-                            <span>{totalPrice}$</span>
+                            <span>{totalPrice}₴</span>
                             <div className="button__delimiter"></div>
                             <svg
                                 width="18"
